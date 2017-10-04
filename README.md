@@ -52,10 +52,10 @@ Haven't figured this part out properly so you'll have to enable SSL manually.
 
 ## Other useful commands
 
-List running containers: `docker ps`
-List available containers: `docker container ls`
-List available images: `docker image ls`
+List running containers: `docker ps`  
+List available containers: `docker container ls`  
+List available images: `docker image ls`  
 
-Stop all containers: `docker-compose down`
-See logs for container: `docker-compose logs backend`
-Rebuild only changed layers (and deploy): `docker-compose up -d --build`
+Stop all containers: `docker-compose down`  
+See logs for container: `docker-compose logs backend`  
+Rebuild only changed layers (and deploy): `docker-compose up -d --build`  
