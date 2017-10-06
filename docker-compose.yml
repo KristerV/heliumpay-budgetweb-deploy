@@ -21,6 +21,7 @@ services:
     restart: always
     environment:
       - DB_HOST=db # override for docker-compose internal network
+      - DB_SSL=true # use ssl connection for production db
       - MAILGUN_API_KEY # secret, set manually with $ export MAILGUN_API_KEY=[api-key]
       - MAILGUN_DOMAIN # secret, set manually with $ export MAILGUN_DOMAIN=[domain]
 

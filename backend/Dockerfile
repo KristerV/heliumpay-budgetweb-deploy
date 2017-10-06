@@ -16,5 +16,8 @@ WORKDIR /var/www/backend
 RUN git clone https://github.com/KristerV/heliumpay-budgetweb-backend.git .
 RUN npm install
 
+# Run migrations
+RUN npm run db:migrations:run
+
 # Run
 CMD npm run production
