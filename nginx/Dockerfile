@@ -9,7 +9,7 @@ RUN apt install -y python-certbot-nginx
 
 # Install Nginx
 RUN apt install -y nginx
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./conf.d/* /etc/nginx/conf.d/
 
 # Run nginx
 CMD nginx -g 'daemon off;'
