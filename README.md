@@ -24,9 +24,22 @@ _I have no idea.. Fill when you find out._
 
 `eval $(docker-machine env helium-core-1)`
 
+**Get environment secrets**
+
+Make a file called `.env.production.secrets` (or whatever) and insert env variables like so:
+
+```
+export DB_HOST=xxx
+export DB_PORT=xxx
+export MAILGUN_API_KEY=xxx
+export MAILGUN_DOMAIN=xxx
+```
+
+This is not the full list of variables needed. Later when we're using Docker Swarm, we can use `docker secret` for this.
+
 **Build and Deploy**
 
-`docker-compose up -d`
+`(source .env.production.secrets && docker-compose up -d)`
 
 **Apply certs**
 
@@ -40,7 +53,7 @@ Haven't figured this part out properly so you'll have to enable SSL manually.
 
 **Update container**
 
-`docker build backend/ --no-cache`
+`docker-compose build backend --no-cache`
 
 **Connect to server**
 

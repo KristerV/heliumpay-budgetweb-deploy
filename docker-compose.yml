@@ -17,12 +17,18 @@ services:
       - coinbin:/coinbin
     depends_on:
       - daemon
-    command: bash -c "cp /coinbin/helium* /usr/local/bin/ && node index.js"
+    command: bash -c "cp /coinbin/helium* /usr/local/bin/ && npm run db:migrations:run && node index.js"
     restart: always
     environment:
-      - DB_HOST=db # override for docker-compose internal network
-      - MAILGUN_API_KEY # secret, set manually with $ export MAILGUN_API_KEY=[api-key]
-      - MAILGUN_DOMAIN # secret, set manually with $ export MAILGUN_DOMAIN=[domain]
+      - DB_HOST
+      - DB_PORT
+      - DB_NAME
+      - DB_USER
+      - DB_PASSWORD
+      - DB_SSL
+      - JWT_SECRET
+      - MAILGUN_API_KEY
+      - MAILGUN_DOMAIN
 
   frontend:
     build: ./frontend
@@ -40,15 +46,6 @@ services:
       - 8332:8332
     command: bash -c "cp /usr/local/bin/helium* /coinbin && /usr/local/bin/heliumd"
     restart: always
-
-  db:
-    image: postgres
-    ports:
-      - 5432:5432
-    environment:
-      POSTGRES_DB: heliumlabs
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
 
 volumes:
   coinbin:
