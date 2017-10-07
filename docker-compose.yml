@@ -46,7 +46,10 @@ services:
       - 8332:8332
     command: bash -c "cp /usr/local/bin/helium* /coinbin && /usr/local/bin/heliumd"
     restart: always
+    volumes:
+      - coincore:/root/.heliumcore
 
 volumes:
   coinbin:
   letsencrypt:
+  coincore:

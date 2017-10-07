@@ -41,7 +41,7 @@ This is not the full list of variables needed. Later when we're using Docker Swa
 
 `(source .env.production.secrets && docker-compose up -d)`
 
-**Apply certs**
+**Enable SSL**
 
 Haven't figured this part out properly so you'll have to enable SSL manually.
 
@@ -53,7 +53,7 @@ Haven't figured this part out properly so you'll have to enable SSL manually.
 
 **Update container**
 
-`docker-compose build backend --no-cache`
+`docker-compose build --no-cache backend`
 
 **Connect to server**
 
