@@ -10,6 +10,9 @@ services:
     restart: always
     volumes:
       - letsencrypt:/etc/letsencrypt
+    depends_on:
+      - backend
+      - frontend
 
   backend:
     build: ./backend
@@ -32,6 +35,7 @@ services:
 
   frontend:
     build: ./frontend
+    restart: always
     environment:
       - NODE_ENV=PRODUCTION
       - API_URL=http://backend:3000
@@ -42,12 +46,11 @@ services:
     build: ./daemon
     volumes:
       - coinbin:/coinbin
+      - coincore:/root/.heliumcore
     ports:
       - 8332:8332
     command: bash -c "cp /usr/local/bin/helium* /coinbin && /usr/local/bin/heliumd"
     restart: always
-    volumes:
-      - coincore:/root/.heliumcore
 
 volumes:
   coinbin:
