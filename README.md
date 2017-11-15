@@ -63,6 +63,13 @@ Haven't figured this part out properly so you'll have to enable SSL manually.
 
 `docker-compose up -d`
 
+## Update SSL cert
+
+Sorry, this is still manual.
+
+1. SSH into the container with `docker-compose exec nginx /bin/bash`
+1. Run certbot `certbot renew`
+
 ## Other useful commands
 
 List running containers: `docker ps`  
