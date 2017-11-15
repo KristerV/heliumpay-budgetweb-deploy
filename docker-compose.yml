@@ -38,7 +38,7 @@ services:
     restart: always
     environment:
       - NODE_ENV=PRODUCTION
-      - API_URL=http://backend:3000
+      - API_URL=https://api.heliumlabs.org
       - TICKER=HLM
       - SITE_TITLE=Heliumlabs
 
